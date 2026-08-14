@@ -1,0 +1,51 @@
+target:
+  openapi_spec: ./examples/openapi-example.yaml
+  url: http://localhost:8080
+  timeout: 30m
+
+auth:
+  type: bearer
+  bearer_token: ${API_FUZZER_BEARER_TOKEN}
+
+rate_limit:
+  qps: 10
+  concurrency: 5
+  request_interval: 100ms
+  adaptive: true
+  progressive_stress: false
+
+fuzz:
+  seed: 12345
+  max_test_cases: 1000
+  max_depth: 10
+  generate_boundary: true
+  generate_malicious: true
+  stateful: true
+  exclude_endpoints:
+    - /health
+    - /metrics
+  exclude_params:
+    - page
+    - limit
+  custom_payloads:
+    order_number:
+      - "INVALID-001"
+      - "ORD-9999999999"
+    phone:
+      - "000-000-0000"
+      - "+86-13800000000"
+
+analyzer:
+  timeout_threshold: 10s
+  max_response_body_size: 10240
+  max_consecutive_timeouts: 5
+
+reporter:
+  output_dir: ./reports
+  output_formats:
+    - terminal
+    - json
+    - html
+    - sarif
+  fail_on: high
+  baseline_file: ""

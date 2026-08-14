@@ -1,0 +1,96 @@
+# API Compliance Audit Policy Example
+
+# Enable/disable specific rules by ID
+enabled_rules:
+  AUTH-001: true
+  AUTH-002: true
+  AUTH-003: true
+  DATA-001: true
+  DATA-002: true
+  DATA-003: true
+  DATA-004: true
+  INPUT-001: true
+  INPUT-002: true
+  INPUT-003: true
+  INPUT-004: true
+  RATE-001: true
+  RATE-002: true
+  VERSION-001: true
+  VERSION-002: true
+  VERSION-003: true
+  ERROR-001: true
+  ERROR-002: true
+  ERROR-003: true
+  DYNAUTH-001: true
+  DYNCORS-001: true
+  DYNCORS-002: true
+  DYNCORS-003: true
+  DYNSEC-001: true
+  DYNSEC-002: true
+  DYNSEC-003: true
+  DYNSEC-004: true
+  DYNLEAK-001: true
+  DYNLEAK-002: true
+  DYNLEAK-003: true
+  DYNLEAK-004: true
+  DYNMETHOD-001: true
+  DYNCONTENT-001: true
+
+disabled_rules:
+  VERSION-001: false
+
+# Custom severity overrides
+custom_severities:
+  RATE-001: low
+  DATA-003: high
+
+# Custom sensitive field patterns
+custom_sensitive_fields:
+  - internal_id
+  - admin_flag
+  - secret_key
+  - private_token
+  - customer_ssn
+  - bank_routing
+
+# Excluded paths (glob patterns supported)
+excluded_paths:
+  - /health
+  - /metrics
+  - /internal/*
+  - /admin/*
+
+# Custom audit rules using JSONPath + conditions
+custom_rules:
+  - id: CUSTOM-001
+    title: "All POST endpoints must include request_id field"
+    category: input-validation
+    severity: medium
+    description: "All POST request bodies should contain a request_id field for tracing purposes."
+    fix_suggestion: "Add 'request_id' string field to all POST request body schemas."
+    json_path: "$.paths.*[?(@.method == 'post')].requestBody.content.application/json.schema.properties"
+    condition:
+      type: "field_exists"
+      field: "request_id"
+      value: true
+
+  - id: CUSTOM-002
+    title: "Response times should be documented"
+    category: versioning
+    severity: info
+    description: "Endpoints should have x-response-time extension to document expected performance."
+    fix_suggestion: "Add x-response-time extension to endpoints with expected response time in milliseconds."
+    json_path: "$.paths.*.*"
+    condition:
+      type: "has_extension"
+      field: "x-response-time"
+      value: true
+
+# Dynamic probing configuration
+dynamic_probing:
+  skip_methods:
+    - TRACE
+    - CONNECT
+  test_user_agent: "API-Fuzzer-Audit/2.0"
+  timeout_seconds: 10
+  retries: 2

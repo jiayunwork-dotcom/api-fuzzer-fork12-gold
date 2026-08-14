@@ -1,0 +1,57 @@
+payloads:
+  order_number:
+    - "TEST-ORDER-001"
+    - "ORD-2024-99999"
+    - "INVALID_FORMAT"
+  phone:
+    - "13800000000"
+    - "00000000000"
+    - "+86-138-0000-0000"
+  id_card:
+    - "110101199001011234"
+    - "000000000000000000"
+
+detectors:
+  - name: "Internal Path Disclosure"
+    pattern: "/(etc|usr|var|opt)/[a-zA-Z0-9/_-]+"
+    severity: "high"
+    description: "Response contains internal system path"
+
+  - name: "SQL Error Message"
+    pattern: "(MySQL|PostgreSQL|SQLite|ORA-|T_SQL).{0,100}error"
+    severity: "critical"
+    description: "SQL database error message detected"
+
+  - name: "JWT Token Leak"
+    pattern: "eyJ[A-Za-z0-9_-]{10,}\\.[A-Za-z0-9_-]{10,}\\.[A-Za-z0-9_-]{10,}"
+    severity: "critical"
+    description: "JWT token exposed in response"
+
+  - name: "AWS Credentials"
+    pattern: "(AKIA|ASIA)[A-Z0-9]{16}"
+    severity: "critical"
+    description: "AWS access key ID detected"
+
+  - name: "Private Key"
+    pattern: "-----BEGIN (RSA|EC|PGP|DSA) PRIVATE KEY-----"
+    severity: "critical"
+    description: "Private key exposed in response"
+
+excludes:
+  - /health
+  - /metrics
+  - /swagger/*
+  - /openapi.json
+
+mutators:
+  - name: "Truncate Strings"
+    target_types: ["string"]
+    mutation: "truncate"
+
+  - name: "Append Garbage"
+    target_types: ["string", "integer"]
+    mutation: "append_garbage"
+
+  - name: "Flip Bits"
+    target_types: ["integer", "number"]
+    mutation: "flip_bit"

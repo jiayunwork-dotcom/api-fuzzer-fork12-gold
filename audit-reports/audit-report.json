@@ -1,0 +1,161 @@
+{
+  "audit_info": {
+    "api_title": "Test API",
+    "duration_seconds": 0.00230275,
+    "dynamic_enabled": false,
+    "end_time": "2026-05-30T00:38:15+08:00",
+    "policy_file": "Built-in OWASP API Top 10 Policy",
+    "start_time": "2026-05-30T00:38:15+08:00",
+    "target_url": ""
+  },
+  "compliance_score": 96.32352941176471,
+  "findings": [
+    {
+      "created_at": "2026-05-30T00:38:15+08:00",
+      "description": "The endpoint does not have any security requirements defined, making it potentially unauthenticated.",
+      "endpoint": "/users",
+      "evidence": {
+        "has_global_security": false,
+        "has_op_security": false
+      },
+      "fingerprint": "62781c6ecd118547",
+      "fix_suggestion": "Add security requirements to the endpoint or ensure global security covers this endpoint.",
+      "id": "5752baffbcfee60f3950080028b4223a",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "auth",
+      "rule_id": "AUTH-001",
+      "severity": "high",
+      "title": "Endpoint missing security definition"
+    },
+    {
+      "created_at": "2026-05-30T00:38:15+08:00",
+      "description": "A string parameter does not have a maxLength constraint, potentially allowing very large inputs.",
+      "endpoint": "/users",
+      "evidence": {
+        "param_location": "query",
+        "param_name": "search"
+      },
+      "fingerprint": "a0a05d0a2ad04c9e",
+      "fix_suggestion": "Add reasonable maxLength constraints to all string parameters.",
+      "id": "2daed10ccaac84ae0a2e4c39ca6a0523",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "input-validation",
+      "rule_id": "INPUT-002",
+      "severity": "low",
+      "title": "String parameter missing maxLength constraint"
+    },
+    {
+      "created_at": "2026-05-30T00:38:15+08:00",
+      "description": "The OpenAPI specification does not define rate limiting using x-ratelimit extensions.",
+      "endpoint": "",
+      "evidence": {
+        "spec_title": "Test API"
+      },
+      "fingerprint": "061d7f20ddbc29f8",
+      "fix_suggestion": "Add x-ratelimit extensions to document rate limiting policies.",
+      "id": "e45a44c2d4086a4dfe051f1925fc4cda",
+      "is_static": true,
+      "method": "",
+      "rule_category": "rate-limit",
+      "rule_id": "RATE-001",
+      "severity": "medium",
+      "title": "Missing x-ratelimit extension in spec"
+    },
+    {
+      "created_at": "2026-05-30T00:38:15+08:00",
+      "description": "A numeric parameter does not have minimum or maximum value constraints.",
+      "endpoint": "/users",
+      "evidence": {
+        "has_maximum": false,
+        "has_minimum": false,
+        "param_location": "query",
+        "param_name": "page",
+        "param_type": "integer"
+      },
+      "fingerprint": "10dcf754aac165cf",
+      "fix_suggestion": "Add appropriate minimum and maximum constraints to all numeric parameters.",
+      "id": "4889ca57f7def46a81cc6ca26889afd5",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "input-validation",
+      "rule_id": "INPUT-003",
+      "severity": "low",
+      "title": "Numeric parameter missing minimum/maximum constraints"
+    },
+    {
+      "created_at": "2026-05-30T00:38:15+08:00",
+      "description": "Endpoint does not define any 4xx (client error) responses.",
+      "endpoint": "/users",
+      "evidence": {
+        "defined_responses": [
+          "200"
+        ]
+      },
+      "fingerprint": "d8d40e05c0c0e223",
+      "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+      "id": "2c4ae2d6d9b6975870ffabbab250a566",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-001",
+      "severity": "medium",
+      "title": "Endpoint missing 4xx error responses"
+    },
+    {
+      "created_at": "2026-05-30T00:38:15+08:00",
+      "description": "API paths should include a version number (e.g., /api/v1/...) for better backward compatibility.",
+      "endpoint": "/users",
+      "evidence": {
+        "path": "/users"
+      },
+      "fingerprint": "96c5b8953ea8d735",
+      "fix_suggestion": "Add version prefixes to all API paths (e.g., /v1, /v2).",
+      "id": "b1c3fe581536c6183c4793afc4011e21",
+      "is_static": true,
+      "method": "",
+      "rule_category": "versioning",
+      "rule_id": "VERSION-001",
+      "severity": "low",
+      "title": "API path missing version number"
+    },
+    {
+      "created_at": "2026-05-30T00:38:15+08:00",
+      "description": "Endpoint does not define any 5xx (server error) responses.",
+      "endpoint": "/users",
+      "evidence": {
+        "defined_responses": [
+          "200"
+        ]
+      },
+      "fingerprint": "5b96bcd694a4fc79",
+      "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+      "id": "8dbc2d68f9a1e78d025e815865c70907",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-002",
+      "severity": "medium",
+      "title": "Endpoint missing 5xx error responses"
+    }
+  ],
+  "stats": {
+    "by_category": {
+      "auth": 1,
+      "error-handling": 2,
+      "input-validation": 2,
+      "rate-limit": 1,
+      "versioning": 1
+    },
+    "by_severity": {
+      "high": 1,
+      "low": 3,
+      "medium": 3
+    },
+    "failed_rules": 7,
+    "passed_rules": 27,
+    "total_rules": 34
+  },
+  "version": "1.0"
+}

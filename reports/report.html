@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Fuzzer Report - Example API</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #1a1a2e; color: #eee; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: #00d4ff; margin-bottom: 20px; font-size: 28px; }
+        .summary { background: #16213e; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
+        .stat-card { background: #0f3460; padding: 15px; border-radius: 8px; }
+        .stat-card .label { color: #888; font-size: 12px; text-transform: uppercase; }
+        .stat-card .value { font-size: 24px; font-weight: bold; margin-top: 5px; }
+        .severity-critical { color: #ff4757; }
+        .severity-high { color: #ff6b81; }
+        .severity-medium { color: #ffa502; }
+        .severity-low { color: #70a1ff; }
+        .severity-info { color: #7bed9f; }
+        .issues { margin-top: 30px; }
+        .issue { background: #16213e; margin-bottom: 15px; border-radius: 10px; overflow: hidden; }
+        .issue-header { padding: 15px 20px; cursor: pointer; display: flex; align-items: center; gap: 15px; }
+        .issue-header:hover { background: #0f3460; }
+        .severity-badge { padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+        .badge-critical { background: #ff4757; color: white; }
+        .badge-high { background: #ff6b81; color: white; }
+        .badge-medium { background: #ffa502; color: black; }
+        .badge-low { background: #70a1ff; color: white; }
+        .badge-info { background: #7bed9f; color: black; }
+        .issue-title { flex: 1; font-weight: 500; }
+        .issue-endpoint { color: #888; font-size: 14px; }
+        .issue-content { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .issue-content.open { max-height: 2000px; padding-bottom: 20px; }
+        .detail-section { margin-top: 15px; }
+        .detail-section h4 { color: #00d4ff; margin-bottom: 10px; font-size: 14px; text-transform: uppercase; }
+        pre { background: #0a0a1a; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 13px; }
+        code { font-family: 'Courier New', monospace; }
+        .curl { background: #2d3436; padding: 10px; border-radius: 6px; font-size: 12px; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #0f3460; }
+        th { color: #00d4ff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ API Fuzzer Security Report</h1>
+        
+        <div class="summary">
+            <h2>Scan Summary</h2>
+            <div class="summary-grid">
+                <div class="stat-card">
+                    <div class="label">Target URL</div>
+                    <div class="value" style="font-size: 16px;">http://localhost:9999</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">API Title</div>
+                    <div class="value" style="font-size: 16px;">Example API</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Duration</div>
+                    <div class="value">607.288417ms</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Seed</div>
+                    <div class="value">1779986305456830000</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Test Cases</div>
+                    <div class="value">7 / 11</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Endpoint Coverage</div>
+                    <div class="value">50.0%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Critical Issues</div>
+                    <div class="value severity-critical">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">High Issues</div>
+                    <div class="value severity-high">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Medium Issues</div>
+                    <div class="value severity-medium">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Low Issues</div>
+                    <div class="value severity-low">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="issues">
+            <h2>Issues (0)</h2>
+            
+        </div>
+    </div>
+
+    <script>
+        function toggleIssue(id) {
+            const content = document.getElementById('issue-' + id);
+            content.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

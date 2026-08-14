@@ -1,0 +1,44 @@
+{
+  "coverage": {
+    "endpoint_coverage": 50,
+    "endpoints_tested": {
+      "/orders": true,
+      "/orders/{id}": true,
+      "/users": true,
+      "/users/{id}": true
+    },
+    "methods_tested": {
+      "/orders": {
+        "GET": true,
+        "POST": true
+      },
+      "/orders/{id}": {
+        "GET": true
+      },
+      "/users": {
+        "POST": true
+      },
+      "/users/{id}": {
+        "DELETE": true,
+        "GET": true
+      }
+    },
+    "response_codes": {}
+  },
+  "issues": null,
+  "scan_info": {
+    "api_title": "Example API",
+    "completed": 7,
+    "duration": 0.608095875,
+    "end_time": "2026-05-29T12:25:53+08:00",
+    "failed": 7,
+    "seed": 1780028752775368000,
+    "skipped": 4,
+    "start_time": "2026-05-29T12:25:52+08:00",
+    "target_url": "http://localhost:9999",
+    "total_cases": 11
+  },
+  "stats_by_severity": {},
+  "stats_by_type": {},
+  "version": "1.0"
+}

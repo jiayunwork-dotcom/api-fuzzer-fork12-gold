@@ -1,0 +1,747 @@
+{
+  "audit_info": {
+    "api_title": "Example API",
+    "duration_seconds": 0.00311,
+    "dynamic_enabled": false,
+    "end_time": "2026-05-29T12:18:23+08:00",
+    "policy_file": "examples/audit-policy-example.yaml",
+    "start_time": "2026-05-29T12:18:23+08:00",
+    "target_url": ""
+  },
+  "baseline_diff": {
+    "existing_findings": [
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "List endpoint does not have limit/offset or similar pagination parameters, which could lead to data exposure and performance issues.",
+        "endpoint": "/orders",
+        "evidence": {
+          "path": "/orders"
+        },
+        "fingerprint": "04cc76a64baf68b6",
+        "fix_suggestion": "Add pagination parameters (limit, offset, page, page_size) to all list endpoints.",
+        "id": "26643c7d1a368bbca002611bace49ef4",
+        "is_static": true,
+        "method": "get",
+        "rule_category": "data-exposure",
+        "rule_id": "DATA-003",
+        "severity": "medium",
+        "title": "List endpoint missing pagination parameters"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "The OpenAPI specification does not define rate limiting using x-ratelimit extensions.",
+        "endpoint": "",
+        "evidence": {
+          "spec_title": "Example API"
+        },
+        "fingerprint": "061d7f20ddbc29f8",
+        "fix_suggestion": "Add x-ratelimit extensions to document rate limiting policies.",
+        "id": "98c85ef0229ba2eb2f72b114e63ca0bd",
+        "is_static": true,
+        "method": "",
+        "rule_category": "rate-limit",
+        "rule_id": "RATE-001",
+        "severity": "medium",
+        "title": "Missing x-ratelimit extension in spec"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 4xx (client error) responses.",
+        "endpoint": "/orders/{id}",
+        "evidence": {
+          "defined_responses": [
+            "200"
+          ]
+        },
+        "fingerprint": "d71323245fabbda9",
+        "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+        "id": "9cec33344bf78d889f28ef8b56eef1e7",
+        "is_static": true,
+        "method": "get",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-001",
+        "severity": "medium",
+        "title": "Endpoint missing 4xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 5xx (server error) responses.",
+        "endpoint": "/orders/{id}",
+        "evidence": {
+          "defined_responses": [
+            "200"
+          ]
+        },
+        "fingerprint": "d03dbe287adfe506",
+        "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+        "id": "5dd34e1853efa704ab8314de762e3b67",
+        "is_static": true,
+        "method": "get",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-002",
+        "severity": "medium",
+        "title": "Endpoint missing 5xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 4xx (client error) responses.",
+        "endpoint": "/users",
+        "evidence": {
+          "defined_responses": [
+            "200"
+          ]
+        },
+        "fingerprint": "d8d40e05c0c0e223",
+        "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+        "id": "2516bf1efed55346f5d371d4e269ca71",
+        "is_static": true,
+        "method": "get",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-001",
+        "severity": "medium",
+        "title": "Endpoint missing 4xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 5xx (server error) responses.",
+        "endpoint": "/users",
+        "evidence": {
+          "defined_responses": [
+            "200"
+          ]
+        },
+        "fingerprint": "5b96bcd694a4fc79",
+        "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+        "id": "77fd247c8d1358a386f44c6be33470b1",
+        "is_static": true,
+        "method": "get",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-002",
+        "severity": "medium",
+        "title": "Endpoint missing 5xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 4xx (client error) responses.",
+        "endpoint": "/users",
+        "evidence": {
+          "defined_responses": [
+            "201"
+          ]
+        },
+        "fingerprint": "a43fa6c525f808dd",
+        "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+        "id": "8e424c88da427757d6f8e54f59f8ef64",
+        "is_static": true,
+        "method": "post",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-001",
+        "severity": "medium",
+        "title": "Endpoint missing 4xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 5xx (server error) responses.",
+        "endpoint": "/users",
+        "evidence": {
+          "defined_responses": [
+            "201"
+          ]
+        },
+        "fingerprint": "bd3747196752008b",
+        "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+        "id": "217b377879ee1ad892c3f390d9a5b27d",
+        "is_static": true,
+        "method": "post",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-002",
+        "severity": "medium",
+        "title": "Endpoint missing 5xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 5xx (server error) responses.",
+        "endpoint": "/users/{id}",
+        "evidence": {
+          "defined_responses": [
+            "200",
+            "404"
+          ]
+        },
+        "fingerprint": "68671e9e56a2cbcb",
+        "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+        "id": "5391fdb8d54468931ea30cc548c364d5",
+        "is_static": true,
+        "method": "get",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-002",
+        "severity": "medium",
+        "title": "Endpoint missing 5xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 4xx (client error) responses.",
+        "endpoint": "/users/{id}",
+        "evidence": {
+          "defined_responses": [
+            "200"
+          ]
+        },
+        "fingerprint": "a19bf4f8fd0c04f1",
+        "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+        "id": "102e127e496d88e5ee16d8e9f293a6d4",
+        "is_static": true,
+        "method": "put",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-001",
+        "severity": "medium",
+        "title": "Endpoint missing 4xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 5xx (server error) responses.",
+        "endpoint": "/users/{id}",
+        "evidence": {
+          "defined_responses": [
+            "200"
+          ]
+        },
+        "fingerprint": "0e3a1eb6650696da",
+        "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+        "id": "14cc09357a5c2c79d6b614f1a5fbe441",
+        "is_static": true,
+        "method": "put",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-002",
+        "severity": "medium",
+        "title": "Endpoint missing 5xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 4xx (client error) responses.",
+        "endpoint": "/users/{id}",
+        "evidence": {
+          "defined_responses": [
+            "204"
+          ]
+        },
+        "fingerprint": "950fd6b2fb63497f",
+        "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+        "id": "f3f84517a78134eb6f86fadb06cca1eb",
+        "is_static": true,
+        "method": "delete",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-001",
+        "severity": "medium",
+        "title": "Endpoint missing 4xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 5xx (server error) responses.",
+        "endpoint": "/users/{id}",
+        "evidence": {
+          "defined_responses": [
+            "204"
+          ]
+        },
+        "fingerprint": "4f973f89318117be",
+        "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+        "id": "d6a01abda788cb3603f7a181a52becf1",
+        "is_static": true,
+        "method": "delete",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-002",
+        "severity": "medium",
+        "title": "Endpoint missing 5xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 4xx (client error) responses.",
+        "endpoint": "/orders",
+        "evidence": {
+          "defined_responses": [
+            "200"
+          ]
+        },
+        "fingerprint": "4c1f055b9ff349e8",
+        "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+        "id": "74be966d38bc8920b5e915d6e64f6cf4",
+        "is_static": true,
+        "method": "get",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-001",
+        "severity": "medium",
+        "title": "Endpoint missing 4xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 5xx (server error) responses.",
+        "endpoint": "/orders",
+        "evidence": {
+          "defined_responses": [
+            "200"
+          ]
+        },
+        "fingerprint": "1c227a14a83b089c",
+        "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+        "id": "5f28a9492fd01fd5cf3b0adf0f107ed1",
+        "is_static": true,
+        "method": "get",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-002",
+        "severity": "medium",
+        "title": "Endpoint missing 5xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 4xx (client error) responses.",
+        "endpoint": "/orders",
+        "evidence": {
+          "defined_responses": [
+            "201"
+          ]
+        },
+        "fingerprint": "5a70624d893f7abe",
+        "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+        "id": "bb2939118b3c257e69b183d7afbbffce",
+        "is_static": true,
+        "method": "post",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-001",
+        "severity": "medium",
+        "title": "Endpoint missing 4xx error responses"
+      },
+      {
+        "created_at": "2026-05-29T12:18:23+08:00",
+        "description": "Endpoint does not define any 5xx (server error) responses.",
+        "endpoint": "/orders",
+        "evidence": {
+          "defined_responses": [
+            "201"
+          ]
+        },
+        "fingerprint": "a27796e13fe4ae18",
+        "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+        "id": "413b685656a58e9777a0995cbf3ad953",
+        "is_static": true,
+        "method": "post",
+        "rule_category": "error-handling",
+        "rule_id": "ERROR-002",
+        "severity": "medium",
+        "title": "Endpoint missing 5xx error responses"
+      }
+    ],
+    "fixed_findings": 0,
+    "new_findings": null
+  },
+  "compliance_score": 97.77777777777777,
+  "findings": [
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "List endpoint does not have limit/offset or similar pagination parameters, which could lead to data exposure and performance issues.",
+      "endpoint": "/orders",
+      "evidence": {
+        "path": "/orders"
+      },
+      "fingerprint": "04cc76a64baf68b6",
+      "fix_suggestion": "Add pagination parameters (limit, offset, page, page_size) to all list endpoints.",
+      "id": "26643c7d1a368bbca002611bace49ef4",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "data-exposure",
+      "rule_id": "DATA-003",
+      "severity": "medium",
+      "title": "List endpoint missing pagination parameters"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "The OpenAPI specification does not define rate limiting using x-ratelimit extensions.",
+      "endpoint": "",
+      "evidence": {
+        "spec_title": "Example API"
+      },
+      "fingerprint": "061d7f20ddbc29f8",
+      "fix_suggestion": "Add x-ratelimit extensions to document rate limiting policies.",
+      "id": "98c85ef0229ba2eb2f72b114e63ca0bd",
+      "is_static": true,
+      "method": "",
+      "rule_category": "rate-limit",
+      "rule_id": "RATE-001",
+      "severity": "medium",
+      "title": "Missing x-ratelimit extension in spec"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 4xx (client error) responses.",
+      "endpoint": "/orders/{id}",
+      "evidence": {
+        "defined_responses": [
+          "200"
+        ]
+      },
+      "fingerprint": "d71323245fabbda9",
+      "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+      "id": "9cec33344bf78d889f28ef8b56eef1e7",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-001",
+      "severity": "medium",
+      "title": "Endpoint missing 4xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 5xx (server error) responses.",
+      "endpoint": "/orders/{id}",
+      "evidence": {
+        "defined_responses": [
+          "200"
+        ]
+      },
+      "fingerprint": "d03dbe287adfe506",
+      "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+      "id": "5dd34e1853efa704ab8314de762e3b67",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-002",
+      "severity": "medium",
+      "title": "Endpoint missing 5xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 4xx (client error) responses.",
+      "endpoint": "/users",
+      "evidence": {
+        "defined_responses": [
+          "200"
+        ]
+      },
+      "fingerprint": "d8d40e05c0c0e223",
+      "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+      "id": "2516bf1efed55346f5d371d4e269ca71",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-001",
+      "severity": "medium",
+      "title": "Endpoint missing 4xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 5xx (server error) responses.",
+      "endpoint": "/users",
+      "evidence": {
+        "defined_responses": [
+          "200"
+        ]
+      },
+      "fingerprint": "5b96bcd694a4fc79",
+      "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+      "id": "77fd247c8d1358a386f44c6be33470b1",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-002",
+      "severity": "medium",
+      "title": "Endpoint missing 5xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 4xx (client error) responses.",
+      "endpoint": "/users",
+      "evidence": {
+        "defined_responses": [
+          "201"
+        ]
+      },
+      "fingerprint": "a43fa6c525f808dd",
+      "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+      "id": "8e424c88da427757d6f8e54f59f8ef64",
+      "is_static": true,
+      "method": "post",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-001",
+      "severity": "medium",
+      "title": "Endpoint missing 4xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 5xx (server error) responses.",
+      "endpoint": "/users",
+      "evidence": {
+        "defined_responses": [
+          "201"
+        ]
+      },
+      "fingerprint": "bd3747196752008b",
+      "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+      "id": "217b377879ee1ad892c3f390d9a5b27d",
+      "is_static": true,
+      "method": "post",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-002",
+      "severity": "medium",
+      "title": "Endpoint missing 5xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 5xx (server error) responses.",
+      "endpoint": "/users/{id}",
+      "evidence": {
+        "defined_responses": [
+          "200",
+          "404"
+        ]
+      },
+      "fingerprint": "68671e9e56a2cbcb",
+      "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+      "id": "5391fdb8d54468931ea30cc548c364d5",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-002",
+      "severity": "medium",
+      "title": "Endpoint missing 5xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 4xx (client error) responses.",
+      "endpoint": "/users/{id}",
+      "evidence": {
+        "defined_responses": [
+          "200"
+        ]
+      },
+      "fingerprint": "a19bf4f8fd0c04f1",
+      "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+      "id": "102e127e496d88e5ee16d8e9f293a6d4",
+      "is_static": true,
+      "method": "put",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-001",
+      "severity": "medium",
+      "title": "Endpoint missing 4xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 5xx (server error) responses.",
+      "endpoint": "/users/{id}",
+      "evidence": {
+        "defined_responses": [
+          "200"
+        ]
+      },
+      "fingerprint": "0e3a1eb6650696da",
+      "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+      "id": "14cc09357a5c2c79d6b614f1a5fbe441",
+      "is_static": true,
+      "method": "put",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-002",
+      "severity": "medium",
+      "title": "Endpoint missing 5xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 4xx (client error) responses.",
+      "endpoint": "/users/{id}",
+      "evidence": {
+        "defined_responses": [
+          "204"
+        ]
+      },
+      "fingerprint": "950fd6b2fb63497f",
+      "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+      "id": "f3f84517a78134eb6f86fadb06cca1eb",
+      "is_static": true,
+      "method": "delete",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-001",
+      "severity": "medium",
+      "title": "Endpoint missing 4xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 5xx (server error) responses.",
+      "endpoint": "/users/{id}",
+      "evidence": {
+        "defined_responses": [
+          "204"
+        ]
+      },
+      "fingerprint": "4f973f89318117be",
+      "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+      "id": "d6a01abda788cb3603f7a181a52becf1",
+      "is_static": true,
+      "method": "delete",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-002",
+      "severity": "medium",
+      "title": "Endpoint missing 5xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 4xx (client error) responses.",
+      "endpoint": "/orders",
+      "evidence": {
+        "defined_responses": [
+          "200"
+        ]
+      },
+      "fingerprint": "4c1f055b9ff349e8",
+      "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+      "id": "74be966d38bc8920b5e915d6e64f6cf4",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-001",
+      "severity": "medium",
+      "title": "Endpoint missing 4xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 5xx (server error) responses.",
+      "endpoint": "/orders",
+      "evidence": {
+        "defined_responses": [
+          "200"
+        ]
+      },
+      "fingerprint": "1c227a14a83b089c",
+      "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+      "id": "5f28a9492fd01fd5cf3b0adf0f107ed1",
+      "is_static": true,
+      "method": "get",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-002",
+      "severity": "medium",
+      "title": "Endpoint missing 5xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 4xx (client error) responses.",
+      "endpoint": "/orders",
+      "evidence": {
+        "defined_responses": [
+          "201"
+        ]
+      },
+      "fingerprint": "5a70624d893f7abe",
+      "fix_suggestion": "Define appropriate 4xx responses (400, 401, 403, 404) for all endpoints.",
+      "id": "bb2939118b3c257e69b183d7afbbffce",
+      "is_static": true,
+      "method": "post",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-001",
+      "severity": "medium",
+      "title": "Endpoint missing 4xx error responses"
+    },
+    {
+      "created_at": "2026-05-29T12:18:23+08:00",
+      "description": "Endpoint does not define any 5xx (server error) responses.",
+      "endpoint": "/orders",
+      "evidence": {
+        "defined_responses": [
+          "201"
+        ]
+      },
+      "fingerprint": "a27796e13fe4ae18",
+      "fix_suggestion": "Define 500 response for all endpoints to document server error handling.",
+      "id": "413b685656a58e9777a0995cbf3ad953",
+      "is_static": true,
+      "method": "post",
+      "rule_category": "error-handling",
+      "rule_id": "ERROR-002",
+      "severity": "medium",
+      "title": "Endpoint missing 5xx error responses"
+    }
+  ],
+  "policy": {
+    "custom_rules_count": 2,
+    "custom_severities": {},
+    "enabled_rules": {
+      "AUTH-001": true,
+      "AUTH-002": true,
+      "AUTH-003": true,
+      "AUTH-004": true,
+      "CUSTOM-001": true,
+      "CUSTOM-002": true,
+      "DATA-001": true,
+      "DATA-002": true,
+      "DATA-003": true,
+      "DYNAUTH-001": true,
+      "DYNAUTH-002": true,
+      "DYNCONTENT-001": true,
+      "DYNCORS-001": true,
+      "DYNCORS-002": true,
+      "DYNCORS-003": true,
+      "DYNHEADER-001": true,
+      "DYNHEADER-002": true,
+      "DYNHEADER-003": true,
+      "DYNHEADER-004": true,
+      "DYNLEAK-001": true,
+      "DYNLEAK-002": true,
+      "DYNLEAK-003": true,
+      "DYNLEAK-004": true,
+      "DYNMETHOD-001": true,
+      "ERROR-001": true,
+      "ERROR-002": true,
+      "ERROR-003": true,
+      "ERROR-004": true,
+      "INPUT-001": true,
+      "INPUT-002": true,
+      "INPUT-003": true,
+      "INPUT-004": true,
+      "RATE-001": true,
+      "RATE-002": true,
+      "VERSION-001": true,
+      "VERSION-002": true
+    },
+    "excluded_paths": null,
+    "sensitive_fields": [
+      "password",
+      "passwd",
+      "pwd",
+      "secret",
+      "token",
+      "auth_token",
+      "access_token",
+      "refresh_token",
+      "api_key",
+      "apikey",
+      "private_key",
+      "ssn",
+      "social_security",
+      "credit_card",
+      "cc_number",
+      "card_number",
+      "cvv",
+      "cvc",
+      "expiry",
+      "expiration",
+      "birth_date",
+      "dob",
+      "mother_maiden",
+      "driver_license",
+      "passport",
+      "bank_account",
+      "routing_number",
+      "pin"
+    ]
+  },
+  "stats": {
+    "by_category": {
+      "data-exposure": 1,
+      "error-handling": 15,
+      "rate-limit": 1
+    },
+    "by_severity": {
+      "medium": 17
+    },
+    "failed_rules": 4,
+    "passed_rules": 32,
+    "total_rules": 36
+  },
+  "version": "1.0"
+}

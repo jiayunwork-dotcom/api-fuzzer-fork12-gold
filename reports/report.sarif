@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "artifacts": [
+        {
+          "location": {
+            "uri": "http://localhost:9999"
+          }
+        }
+      ],
+      "invocations": [
+        {
+          "endTimeUtc": "2026-05-28T15:43:45Z",
+          "executionSuccessful": true,
+          "startTimeUtc": "2026-05-28T15:43:35Z"
+        }
+      ],
+      "results": null,
+      "tool": {
+        "driver": {
+          "informationUri": "https://github.com/api-fuzzer/apifuzzer",
+          "name": "API Fuzzer",
+          "rules": null,
+          "version": "1.0.0"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
