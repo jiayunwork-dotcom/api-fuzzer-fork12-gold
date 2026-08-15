@@ -126,7 +126,7 @@ func MapToQueryString(params map[string]interface{}) string {
 }
 
 func TruncateString(s string, maxLength int) string {
-	if len(s) < maxLength {
+	if len(s) <= maxLength {
 		return s
 	}
 	if maxLength <= 0 {
